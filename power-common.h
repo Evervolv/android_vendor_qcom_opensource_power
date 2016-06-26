@@ -54,6 +54,8 @@ void power_hint(power_hint_t hint, void* data);
 void set_expensive_rendering(bool enabled);
 void set_interactive(int on);
 
+#define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
+
 #ifdef __cplusplus
 }
 #endif
