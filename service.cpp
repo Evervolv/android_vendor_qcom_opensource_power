@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -46,7 +47,6 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-using android::hardware::power::V1_2::IPower;
 using android::hardware::power::V1_2::implementation::Power;
 
 int main() {
@@ -55,7 +55,7 @@ int main() {
 #endif
 
     status_t status;
-    android::sp<IPower> service = nullptr;
+    android::sp<Power> service = nullptr;
 
     ALOGI("Power HAL Service 1.2 is starting.");
 
@@ -68,7 +68,7 @@ int main() {
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    status = service->registerAsService();
+    status = service->registerAsSystemService();
     if (status != OK) {
         ALOGE("Could not register service for Power HAL(%d).", status);
         goto shutdown;
